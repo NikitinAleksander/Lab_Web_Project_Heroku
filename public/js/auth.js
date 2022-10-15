@@ -10,7 +10,7 @@ async function auth(form) {
     cred.username = form.username.value;
   }
   toastr.options.positionClass = 'toast-top-right';
-  await fetch(`http://localhost:8080/auth/${req}`, {
+  await fetch(`http://localhost:3000/auth/${req}`, {
     method: 'POST',
     body: JSON.stringify(cred),
     headers: {
