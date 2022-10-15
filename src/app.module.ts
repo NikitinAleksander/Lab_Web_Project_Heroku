@@ -10,11 +10,11 @@ import { AppGateway } from './app.gateway';
   imports: [
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'ec2-176-34-215-248.eu-west-1.compute.amazonaws.com',
+      host: 'localhost',
       port: 5432,
-      username: 'wrwyhcydvcsyyc',
-      password: '971ef50a0fc29251e4d38de33d148c230dbb5b73e0cb0025371a6cd55fae6512',
-      database: 'postgresql-regular-53484',
+      username: 'postgres',
+      password: 'YE3QPA4H',
+      database: 'postgres',
       entities: ['dist/**/entities/*.entity{.ts,.js}'],
       synchronize: true,
       autoLoadEntities: true,
