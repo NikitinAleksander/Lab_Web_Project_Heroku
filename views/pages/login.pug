@@ -1,0 +1,40 @@
+extends layouts/layout
+block content
+    .container
+        .row.mt-50
+            .col-md-offset-3.col-md-6
+            .tab(role="tabpanel")
+                //  Nav tabs 
+                ul.nav.nav-tabs(role="tablist")
+                li.active(role="presentation")
+                    a(href="#Section1", aria-controls="home", role="tab", data-toggle="tab") sign in
+                li(role="presentation")
+                    a(href="#Section2", aria-controls="profile", role="tab", data-toggle="tab") sign up
+                //  Tab panes 
+                .tab-content.tabs
+                .tab-pane.fade.in.active#Section1(role="tabpanel")
+                    form.form-horizontal
+                    .form-group
+                        label(for="exampleInputEmail1") username
+                        input.form-control#exampleInputEmail1(type="email")
+                    .form-group
+                        label(for="exampleInputPassword1") Password
+                        input.form-control#exampleInputPassword1(type="password")
+                    .form-group
+                        button.btn.btn-default(type="submit") Sign in
+                .tab-pane.fade#Section2(role="tabpanel")
+                    form.form-horizontal
+                    .form-group
+                        label(for="exampleInputEmail1") UserName
+                        input.form-control#exampleInputEmail1(type="text")
+                    .form-group
+                        label(for="exampleInputEmail1") Email address
+                        input.form-control#exampleInputEmail1(type="email")
+                    .form-group
+                        label(for="exampleInputPassword1") Password
+                        input.form-control#exampleInputPassword1(type="password")
+                    .form-group
+                        button.btn.btn-default(type="submit") Sign up
+    //  /.col-md-offset-3 col-md-6 
+  //  /.row 
+//  /.container 
