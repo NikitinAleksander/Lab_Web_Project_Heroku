@@ -15,4 +15,14 @@ export class PostsService {
         const post = await this.postRepository.create({...dto, image: fileName})
         return post;
     }
+
+    async getList() {
+        var posts = this.postRepository.findAll({include: {all: true}});
+        return posts;
+    }
+
+    async createWithoutImage(dto: CreatePostDto) {
+        const post = await this.postRepository.create(dto)
+        return post;
+    }
 }
