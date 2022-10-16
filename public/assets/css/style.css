@@ -14,10 +14,20 @@
 @import url(vendor/nice-select.css);
 @import url(vendor/perfect-scrollbar.css);
 
+
+html { height: 100%; }
+
 body {
-    font-family: 'Arimo', sans-serif;
-    font-weight: normal;
-    font-style: normal
+  min-height:100%; 
+  position:relative; 
+  padding-bottom: 70px; 
+}
+footer { 
+  position: absolute; 
+  left: 0;
+  right: 0;
+  bottom: 0; 
+  height: 40px; 
 }
 
 h1, h2, h3, h4, h5, h6, .readmore-btn, .widget-taber a.nav-link {
