@@ -1,30 +1,43 @@
-import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { TypeOrmModule } from '@nestjs/typeorm';
+import {Module} from "@nestjs/common";
+import {SequelizeModule} from "@nestjs/sequelize";
 import { UsersModule } from './users/users.module';
+import {ConfigModule} from "@nestjs/config";
+import {User} from "./users/users.model";
+import { RolesModule } from './roles/roles.module';
+import {Role} from "./roles/roles.model";
+import {UserRoles} from "./roles/user-roles.model";
 import { AuthModule } from './auth/auth.module';
-import { AppGateway } from './app.gateway';
 import { PostsModule } from './posts/posts.module';
+import {Post} from "./posts/posts.model";
+import { FilesModule } from './files/files.module';
+import { AppController } from "./app.controller";
 
 @Module({
-  imports: [
-    TypeOrmModule.forRoot({
-      type: 'postgres',
-      host: 'localhost',
-      port: 5444,
-      username: 'postgres',
-      password: 'password',
-      database: 'postgres',
-      entities: ['dist/**/entities/*.entity{.ts,.js}'],
-      synchronize: true,
-      autoLoadEntities: true,
-    }),
-    UsersModule,
-    AuthModule,
-    PostsModule
-  ],
-  controllers: [AppController],
-  providers: [AppService, AppGateway],
+    controllers: [AppController],
+    providers: [],
+    imports: [
+        ConfigModule.forRoot({
+           //envFilePath: `.${process.env.NODE_ENV}.env`
+           envFilePath: `.development.env`
+        }),
+        // ServeStaticModule.forRoot({
+        //     rootPath: path.resolve( __dirname, 'views'),
+        // }),
+        SequelizeModule.forRoot({
+            dialect: 'postgres',
+            host: process.env.POSTGRES_HOST,
+            port: Number(process.env.POSTGRESS_PORT),
+            username: process.env.POSTGRES_USER,
+            password: process.env.POSTGRESS_PASSWORD,
+            database: process.env.POSTGRES_DB,
+            models: [User, Role, UserRoles, Post],
+            autoLoadModels: true
+        }),
+        UsersModule,
+        RolesModule,
+        AuthModule,
+        PostsModule,
+        FilesModule,
+    ]
 })
 export class AppModule {}

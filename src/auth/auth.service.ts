@@ -1,83 +1,44 @@
-import {
-  HttpException,
-  HttpStatus,
-  Injectable,
-  UnauthorizedException,
-} from '@nestjs/common';
-import { LoginUserDto } from './DTO/login-user-dto';
-import { RegisterUserDto } from './DTO/register-user.dto';
-import { User } from '../users/entities/user.entity';
-import { UsersService } from '../users/users.service';
-import * as bcrypt from 'bcrypt';
-import { JwtService } from '@nestjs/jwt';
+import {HttpException, HttpStatus, Injectable, UnauthorizedException} from '@nestjs/common';
+import {CreateUserDto} from "../users/dto/create-user.dto";
+import {UsersService} from "../users/users.service";
+import {JwtService} from "@nestjs/jwt";
+import * as bcrypt from 'bcryptjs'
+import {User} from "../users/users.model";
 
 @Injectable()
 export class AuthService {
-  constructor(
-    private userService: UsersService,
-    private jwtService: JwtService,
-  ) {}
 
-  async login(loginUserDto: LoginUserDto): Promise<{ token: string }> {
-    const user = await this.validateUser(loginUserDto);
-    return this.generateToken(user);
-  }
+    constructor(private userService: UsersService,
+                private jwtService: JwtService) {}
 
-  async registration(
-    registerUserDto: RegisterUserDto,
-  ): Promise<{ token: string }> {
-    const candidate = await this.userService.getUserByEmail(
-      registerUserDto.email,
-    );
-    if (registerUserDto === undefined || candidate) {
-      throw new HttpException(
-        'Пользователь с таким email существует',
-        HttpStatus.BAD_REQUEST,
-      );
+    async login(userDto: CreateUserDto) {
+        const user = await this.validateUser(userDto)
+        return this.generateToken(user)
     }
-    const hashPassword = await bcrypt.hash(registerUserDto.password, 5);
-    const user = await this.userService.addUser({
-      ...registerUserDto,
-      password: hashPassword,
-    });
-    return this.generateToken(user);
-  }
 
-  private async validateUser(userDto: LoginUserDto): Promise<User> {
-    const user = await this.userService.getUserByEmail(userDto.email);
-    if (!user) {
-      throw new UnauthorizedException({
-        message: 'Некорректный email или пароль',
-      });
+    async registration(userDto: CreateUserDto) {
+        const candidate = await this.userService.getUserByEmail(userDto.email);
+        if (candidate) {
+            throw new HttpException('Пользователь с таким email существует', HttpStatus.BAD_REQUEST);
+        }
+        const hashPassword = await bcrypt.hash(userDto.password, 5);
+        const user = await this.userService.createUser({...userDto, password: hashPassword})
+        return this.generateToken(user)
     }
-    const passwordEquals = await bcrypt.compare(
-      userDto.password,
-      user.password,
-    );
-    if (user && passwordEquals) {
-      return user;
-    }
-    throw new UnauthorizedException({
-      message: 'Некорректный email или пароль',
-    });
-  }
 
-  private async generateToken(user: User): Promise<{ token: string }> {
-    const payLoad = { email: user.email, id: user.id, username: user.username };
-    return {
-      token: this.jwtService.sign(payLoad),
-    };
-  }
-
-  getName(bearer: string) {
-    const token = bearer.split(' ')[1];
-    const user = this.jwtService.decode(token);
-    if (user['username'] === undefined) {
-      throw new HttpException(
-        { message: 'Неизвестный токен' },
-        HttpStatus.BAD_REQUEST,
-      );
+    private async generateToken(user: User) {
+        const payload = {email: user.email, id: user.id, roles: user.roles}
+        return {
+            token: this.jwtService.sign(payload)
+        }
     }
-    return user['username'];
-  }
+
+    private async validateUser(userDto: CreateUserDto) {
+        const user = await this.userService.getUserByEmail(userDto.email);
+        const passwordEquals = await bcrypt.compare(userDto.password, user.password);
+        if (user && passwordEquals) {
+            return user;
+        }
+        throw new UnauthorizedException({message: 'Некорректный емайл или пароль'})
+    }
 }
