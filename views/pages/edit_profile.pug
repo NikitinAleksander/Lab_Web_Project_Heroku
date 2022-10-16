@@ -1,0 +1,20 @@
+extends layouts/layout
+block content
+    main.position-relative.pt-40.background12
+    .container.shadow-lg
+        .row.justify-content-center.mt-20.mb-40.pt-25.pl-25.pb-25.pr-25.bg-light
+        .col.text-center
+            form
+            .row.mb-3
+                label.col-sm-2.col-form-label(for="inputUsername3") Username
+                .col-sm-10
+                input.form-control#inputEmail3(type="email")
+            .row.mb-3
+                label.col-sm-2.col-form-label(for="inputPassword3") Password
+                .col-sm-10
+                input.form-control#inputPassword3(type="password")
+            .row.mb-3
+                label.col-sm-2.col-form-label(for="inputEmail3") Email
+                .col-sm-10
+                input.form-control#inputEmail3(type="email")
+            button.btn.btn-primary(type="submit") Save
