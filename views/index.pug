@@ -1,107 +1,81 @@
 extends layouts/layout
 block content
-    .buttons
-      button.btn.btn-primary.ml-30(type="button", data-toggle="modal", data-target="#modal") Create post
-      .modal.fade#modal(tabindex="-1")
-        .modal-dialog.modal-lg
-          .modal-content(wind)
-            .modal-header
-              h5.modal-title Create post
-            .modal-body
-              .mb-3
-                label.form-label.text-center(for="FormControlTitle") Title
-                input.form-control#FormControlTitle(type="text", placeholder="title post")
-              .mb-3
-                label.form-label(for="FormControlTextarea") Text post
-                textarea.form-control#FormControlTextarea(rows="8")
-              .input-group.mb-3
-                label.input-group-text(for="inputGroupFile01") Upload picture
-                input.form-control#inputGroupFile01(type="file")
-            button.close.pb-45(type="button", data-dismiss="modal")
-              span Save and close
-    .posts
-      .home-featured.mb-50
-        .container
-          .row
-            .col-12
-              .featured-slider-1.border-radius-10
-                .slider-single
-                  .row.no-gutters
-                    .col-lg-6.col-md-12.order-lg-1.order-2.align-center-vertical
-                      .slider-caption
-                        h2.post-title
-                          a(href="#") Why Teamwork Really Makes The Dream Work
-                        .entry-meta.meta-1.font-small.color-grey.mt-20.mb-20
-                          span.post-on
-                            | 25 April 2020
-                        p.excerpt.font-medium.mt-25.mb-25
-                          | We live in a world where disruption and dynamism reign supreme and businesses must be ready to adapt to the many unpredictable changes that come with this
-                          a(href="#")  Read more...
-                        .row.row-cols-2 
-                          .col
-                            .entry-meta.meta-2
-                              a.float-left.mr-10.author-img(href="author.html")
-                                img(src="assets/imgs/news-1.jpg", alt)
-                              a(href="author.html")
-                                span.author-name Robert Fisk
-                              br
-                              span.author-add.color-grey Maidstone,Kent
-                          .col
-                            p.likes 10 
-                              svg.bi.bi-heart(xmlns="http://www.w3.org/2000/svg", width="16", height="16", fill="currentColor", viewBox="0 0 16 16")
-                                path(d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z")
-                             
-                    .slider-img.col-lg-6.order-lg-2.order-1.col-md-12
-                      .img-hover-scale
-                        a(href="single.html")
-                          img(src="assets/imgs/slide-1.jpg", alt="post-slider")
-              .row
-                .col-lg-6.col-md-12
-                  .arrow-cover
+  .posts
+    .home-featured.mb-25.mt-25
+      .container
+        .row
+          .col-12
+            .featured-slider-1.border-radius-10.shadow-lg
+              .slider-single
+                .row.no-gutters
+                  .col-lg-6.col-md-12.order-lg-1.order-2.align-center-vertical
+                    .slider-caption
+                      h2.post-title
+                        a(href="#") Why Teamwork Really Makes The Dream Work
+                      .entry-meta.meta-1.font-small.color-grey.mt-20.mb-20
+                        span.post-on
+                          | 25 April 2020
+                      p.excerpt.font-medium.mt-25.mb-25
+                        | We live in a world where disruption and dynamism reign supreme and businesses must be ready to adapt to the many unpredictable changes that come with this
+                        a(href="#")  Read more...
+                      .row.row-cols-2 
+                        .col
+                          .entry-meta.meta-2
+                            a.float-left.mr-10.author-img(href="author.html")
+                              img(src="assets/imgs/news-1.jpg", alt)
+                            a(href="author.html")
+                              span.author-name Robert Fisk
+                            br
+                            span.author-add.color-grey Maidstone,Kent
+                        .col
+                          p.likes 10 
+                            svg.bi.bi-heart(xmlns="http://www.w3.org/2000/svg", width="16", height="16", fill="currentColor", viewBox="0 0 16 16")
+                              path(d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z")
+                            
+                  .slider-img.col-lg-6.order-lg-2.order-1.col-md-12
+                    .img-hover-scale
+                      a(href="single.html")
+                        img(src="assets/imgs/slide-1.jpg", alt="post-slider")
+            .row
+              .col-lg-6.col-md-12
+                .arrow-cover
 
-    .posts
-          .home-featured.mb-50
-            .container
-              .row
-                .col-12
-                  .featured-slider-1.border-radius-10
-                    .slider-single
-                      .row.no-gutters
-                        .col-lg-6.col-md-12.order-lg-1.order-2.align-center-vertical
-                          .slider-caption
-                            h2.post-title
-                              a(href="#") Why Teamwork Really Makes The Dream Work
-                            .entry-meta.meta-1.font-small.color-grey.mt-20.mb-20
-                              span.post-on
-                                i.ti-marker-alt
-                                | 25 April 2020
-                              span.time-reading
-                                i.ti-timer
-                                | 10 mins read
-                              span.hit-count
-                                i.ti-bolt
-                                | 159k Views
-                            p.excerpt.font-medium.mt-25.mb-25
-                              | We live in a world where disruption and dynamism reign supreme and businesses must be ready to adapt to the many unpredictable changes that come with this
-                              a(href="#")  Read more...
-                            .row.row-cols-2 
-                              .col
-                                .entry-meta.meta-2
-                                  a.float-left.mr-10.author-img(href="author.html")
-                                    img(src="assets/imgs/news-1.jpg", alt)
-                                  a(href="author.html")
-                                    span.author-name Robert Fisk
-                                  br
-                                  span.author-add.color-grey Maidstone,Kent
-                              .col
-                                p.likes 10 
-                                  svg.bi.bi-heart(xmlns="http://www.w3.org/2000/svg", width="16", height="16", fill="currentColor", viewBox="0 0 16 16")
-                                    path(d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z")
-                                
-                        .slider-img.col-lg-6.order-lg-2.order-1.col-md-12
-                          .img-hover-scale
-                            a(href="single.html")
-                              img(src="assets/imgs/slide-1.jpg", alt="post-slider")
-                  .row
-                    .col-lg-6.col-md-12
-                      .arrow-cover
+  .posts
+    .home-featured.mb-25.mt-25
+      .container
+        .row
+          .col-12
+            .featured-slider-1.border-radius-10.shadow-lg
+              .slider-single
+                .row.no-gutters
+                  .col-lg-6.col-md-12.order-lg-1.order-2.align-center-vertical
+                    .slider-caption
+                      h2.post-title
+                        a(href="#") Why Teamwork Really Makes The Dream Work
+                      .entry-meta.meta-1.font-small.color-grey.mt-20.mb-20
+                        span.post-on
+                          | 25 April 2020
+                      p.excerpt.font-medium.mt-25.mb-25
+                        | We live in a world where disruption and dynamism reign supreme and businesses must be ready to adapt to the many unpredictable changes that come with this
+                        a(href="#")  Read more...
+                      .row.row-cols-2 
+                        .col
+                          .entry-meta.meta-2
+                            a.float-left.mr-10.author-img(href="author.html")
+                              img(src="assets/imgs/news-1.jpg", alt)
+                            a(href="author.html")
+                              span.author-name Robert Fisk
+                            br
+                            span.author-add.color-grey Maidstone,Kent
+                        .col
+                          p.likes 10 
+                            svg.bi.bi-heart(xmlns="http://www.w3.org/2000/svg", width="16", height="16", fill="currentColor", viewBox="0 0 16 16")
+                              path(d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z")
+                            
+                  .slider-img.col-lg-6.order-lg-2.order-1.col-md-12
+                    .img-hover-scale
+                      a(href="single.html")
+                        img(src="assets/imgs/slide-1.jpg", alt="post-slider")
+            .row
+              .col-lg-6.col-md-12
+                .arrow-cover
