@@ -1,5 +1,24 @@
 extends layouts/layout
 block content
+    .buttons
+      button.btn.btn-primary.ml-30(type="button", data-toggle="modal", data-target="#modal") Create post
+      .modal.fade#modal(tabindex="-1")
+        .modal-dialog.modal-lg
+          .modal-content(wind)
+            .modal-header
+              h5.modal-title Create post
+            .modal-body
+              .mb-3
+                label.form-label.text-center(for="FormControlTitle") Title
+                input.form-control#FormControlTitle(type="text", placeholder="title post")
+              .mb-3
+                label.form-label(for="FormControlTextarea") Text post
+                textarea.form-control#FormControlTextarea(rows="8")
+              .input-group.mb-3
+                label.input-group-text(for="inputGroupFile01") Upload picture
+                input.form-control#inputGroupFile01(type="file")
+            button.close.pb-45(type="button", data-dismiss="modal")
+              span Save and close
     .posts
       .home-featured.mb-50
         .container
