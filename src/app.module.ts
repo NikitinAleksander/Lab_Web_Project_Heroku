@@ -11,9 +11,9 @@ import { AppGateway } from './app.gateway';
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: 'localhost',
-      port: 5432,
+      port: 5444,
       username: 'postgres',
-      password: 'YE3QPA4H',
+      password: 'password',
       database: 'postgres',
       entities: ['dist/**/entities/*.entity{.ts,.js}'],
       synchronize: true,
