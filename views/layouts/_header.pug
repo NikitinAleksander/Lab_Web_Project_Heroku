@@ -1,12 +1,10 @@
-header.main-header.header-style-1
+header.header-style-1
   - var auth = false 
   if auth 
     include _auth
   else 
     a.pull-right.mr-20.pt-2(href="#") Sign in
 
-
-  
   .header-bottom.header-sticky.background-light.text-center.shadow-lg
     .mobile_menu.d-lg-none.d-block
     .container
@@ -15,7 +13,7 @@ header.main-header.header-style-1
           .buttons
             button.btn.btn-danger.ml-30(type="button", data-toggle="modal", data-target="#modal") Create post
             .modal.fade#modal(tabindex="-1")
-              .modal-dialog.modal-lg
+              .modal-dialog.modal-lg.zindex-modal
                 .modal-content(wind)
                   .modal-header
                     h5.modal-title Create post

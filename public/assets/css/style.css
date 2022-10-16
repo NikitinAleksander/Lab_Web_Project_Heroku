@@ -964,7 +964,7 @@ form.menu-search-form input {
     -o-transform: rotateY(180deg)
 }
 
-.main-header ul>li:hover>ul.sub-menu {
+. ul>li:hover>ul.sub-menu {
     visibility: visible;
     opacity: 1;
     top: 100%
@@ -1097,7 +1097,7 @@ form.menu-search-form input {
 
 .main-header {
     position: relative;
-    z-index: 1002
+    z-index: 1041
 }
 
 .main-header #userMenuDropdow.dropdown-menu, .main-header #userMenuDropdow.dropdown-menu {
@@ -1107,6 +1107,7 @@ form.menu-search-form input {
 .header-style-1 {
     background: #fff;
     box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.05)
+    padding-right: 15px
 }
 
 .header-style-1 .header-bottom, .header-style-2 .header-bottom, .header-style-2.header-style-3 .header-bottom {
