@@ -5,32 +5,41 @@ html(lang='ru')
         include _scripts
         block head
     body
-        .sticky
-            ul
-                li
-                    a(href='/') Главное меню
-                li
-                    a(href='self-development') Саморазвитие
-                li.dropdown
-                    a.dropbtn Здоровье
-                    .dropdown-content
-                        a(href='nutrition') Питание
-                        a(href='sport') Спорт
-                        a(href='habits') Привычки
-                .foxDropdown
-                    .foxDropbtn
-                        span.iconify(data-icon='ion:logo-gitlab' data-inline='false')
-                    .foxDropdown-content
-                        a#sign-in(href='auth') Войти
-                        a#sign-out(onclick='logout(); return false') Выйти
-                        a(href='contacts') Конакты и ссылки на соцсети
-                        a(href='about') О проекте
-                span.iconify#chatClick(data-icon='mdi:file-search-outline' data-inline='false')
-        header.headerFlex
-            .FlexElement
-                h1 Fare gli occhi dolci
-            .FlexElement2
-                p Ваш помощник на пути к совершенству
-                img(src='img/img4.jpg' width='510' height='90')
+        header.main-header.header-style-1
+          .top-bar.pt-10.pb-10.background-white.d-none.d-md-block
+            .container
+              .row
+                .col-12.text-right
+                  .vline-space.d-inline-block
+                  .user-account.d-inline-block.font-small
+                    a.dropdown-toggle#userMenu(href="#", role="button", data-toggle="dropdown", aria-haspopup="true", aria-expanded="false")
+                      i.ti-user
+                      span Account
+                    #userMenuDropdow.dropdown-menu.dropdown-menu-right(aria-labelledby="userMenu")
+                      a.dropdown-item(href="#")
+                        i.ti-pencil-alt
+                        | Edit Profile
+                      .dropdown-divider
+                      a.dropdown-item(href="login.html")
+                        i.ti-share
+                        | Logout
+
+          // End top bar
+          // End logo
+          .header-bottom.header-sticky.background-white.text-center
+            .mobile_menu.d-lg-none.d-block
+            .container
+              .row
+                .col-12
+                  //  Main-menu 
+                  .main-nav.text-center.d-none.d-lg-block
+                    nav
+                      ul#navigation.main-menu
+                        li.menu-item-has-children
+                          a(href="index.html") Filter
+                          ul.sub-menu
+                            li
+                              a(href="index.html") All posts
+                            li
+                              a(href="home-2.html") My posts
         block content
-        block scripts
