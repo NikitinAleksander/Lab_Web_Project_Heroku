@@ -8,3 +8,8 @@ services:
       POSTGRES_PASSWORD: "password"
     ports:
       - "5444:5432"
+    env_file:
+    - .env
+networks:
+  postgres:
+    driver: bridge
