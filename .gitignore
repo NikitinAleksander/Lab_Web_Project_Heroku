@@ -36,3 +36,4 @@ lerna-debug.log*
 /pgadmin
 pgadmin
 pgadmin/*
+pgadmin/pgadmin4.db
