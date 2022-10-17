@@ -30,6 +30,7 @@ export class PostsController {
     @ApiResponse({status: 200, type: [Post]})
     @NestPost('withoutImage')
     createPostWithoutImage(@Body() dto: CreatePostDto) {
+         dto.userId = 1;
         return this.postService.createWithoutImage(dto)
     }
 }
