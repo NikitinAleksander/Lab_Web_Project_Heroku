@@ -2,9 +2,10 @@ import {Body, Controller, Get, Post as NestPost, UploadedFile, UseInterceptors} 
 import {CreatePostDto} from "./dto/create-post.dto";
 import {PostsService} from "./posts.service";
 import {FileInterceptor} from "@nestjs/platform-express";
-import { ApiOperation, ApiResponse } from '@nestjs/swagger';
+import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { Post } from './posts.model';
 
+@ApiTags('Посты')
 @Controller('posts')
 export class PostsController {
 
