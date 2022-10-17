@@ -37,12 +37,8 @@ header.header-style-1
                         console.log(aga.title)
         .col
           .main-nav.text-center.d-lg-block
-            nav
-              ul#navigation.main-menu 
-                li
-                  button.btn.btn-danger.ml-30(type="button") Filter
-                  ul.sub-menu
-                    li
-                      a(href="index.html") All posts
-                    li
-                      a(href="home-2.html") My posts
+            button.btn.btn-danger.dropdown-toggle.ml-30(type="button", data-toggle="dropdown", aria-haspopup="true", aria-expanded="false") Filter
+            .dropdown-menu
+              a.dropdown-item(href="#") My posts
+              a.dropdown-item(href="#") All posts
+
