@@ -3,10 +3,9 @@ header.header-style-1
   if auth 
     include _auth
   else 
-    a.pull-right.mr-20.pt-2(href="#") Sign in
+    a.pull-right.mr-20.pt-2(href="login") Sign in
 
   .header-bottom.header-sticky.background-light.text-center.shadow-lg
-    script var aga={title:'dsfjhgsdfjhgsdf',dsf:'asdfsdf'}
     .mobile_menu.d-lg-none.d-block
     .container
       .row
@@ -20,25 +19,46 @@ header.header-style-1
                     h5.modal-title Create post
                   form(action="http://localhost:5000/posts/withoutImage", method="POST")
                     .modal-body
+                      script. 
+                        var post_post=function(){
+                          console.log('document.getElementById(FormControlTitle).value');
+                          return 'post_content';
+                        }
                       .mb-3
                         label.form-label.text-center(for="FormControlTitle") Title
                         input.form-control#FormControlTitle(type="text", placeholder="title post",value='you win', name="title")
                       .mb-3
                         label.form-label(for="FormControlTextarea") Text post
-                        textarea.form-control#FormControlTextarea(rows="8", name="content")
+                        textarea.form-control#FormControlTextarea(rows="8", name="content", value='you wiiiiiiiiiinnnnneeeer!')
                       //- .input-group.mb-3
                       //-   label.input-group-text(for="inputGroupFile01") Upload picture
                       //-   input.form-control#inputGroupFile01(type="file")
-                    button.close.pb-45(type="submit", data-dismiss="modal")
-                      span Save and close
                     script. 
-                        console.log(aga.title)
-                        aga.title=document.getElementById('FormControlTitle').value
-                        console.log(aga.title)
+                      var lol= async function(){
+                        var post_content={
+                          title: document.getElementById('FormControlTitle').value,
+                          content: document.getElementById('FormControlTextarea').value,
+                          authorId: 3
+                        }
+                        const response = await fetch('/posts/withoutImage', {
+                        method: 'POST',
+                        headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
+                        body: JSON.stringify(post_content),
+                        });
+                        if (response.ok === true) {
+                          const product = await response.json();
+                          console.log('ok')
+                        } else {
+
+                          const resp = await response.json();
+                          alert(resp.message);
+                        }                        
+                      }
+                    button.close.pb-45(type="submit", data-dismiss="modal", onclick="lol()")
+                      span Save and close
         .col
           .main-nav.text-center.d-lg-block
             button.btn.btn-danger.dropdown-toggle.ml-30(type="button", data-toggle="dropdown", aria-haspopup="true", aria-expanded="false") Filter
             .dropdown-menu
               a.dropdown-item(href="#") My posts
               a.dropdown-item(href="#") All posts
-

@@ -11,4 +11,10 @@ export class AppController {
 
     return {posts: data};
   }
+
+  @Get('login')
+  @Render('login.pug')
+  root(){
+    return '';
+  }
 }
