@@ -18,22 +18,23 @@ header.header-style-1
                 .modal-content(wind)
                   .modal-header
                     h5.modal-title Create post
-                  .modal-body
-                    .mb-3
-                      label.form-label.text-center(for="FormControlTitle") Title
-                      input.form-control#FormControlTitle(type="text", placeholder="title post",value='you win')
-                    .mb-3
-                      label.form-label(for="FormControlTextarea") Text post
-                      textarea.form-control#FormControlTextarea(rows="8")
-                    .input-group.mb-3
-                      label.input-group-text(for="inputGroupFile01") Upload picture
-                      input.form-control#inputGroupFile01(type="file")
-                  button.close.pb-45(type="button", data-dismiss="modal")
-                    span Save and close
-                  script. 
-                      console.log(aga.title)
-                      aga.title=document.getElementById('FormControlTitle').value
-                      console.log(aga.title)
+                  form(action="http://localhost:5000/posts/withoutImage", method="POST")
+                    .modal-body
+                      .mb-3
+                        label.form-label.text-center(for="FormControlTitle") Title
+                        input.form-control#FormControlTitle(type="text", placeholder="title post",value='you win', name="title")
+                      .mb-3
+                        label.form-label(for="FormControlTextarea") Text post
+                        textarea.form-control#FormControlTextarea(rows="8", name="content")
+                      //- .input-group.mb-3
+                      //-   label.input-group-text(for="inputGroupFile01") Upload picture
+                      //-   input.form-control#inputGroupFile01(type="file")
+                    button.close.pb-45(type="submit", data-dismiss="modal")
+                      span Save and close
+                    script. 
+                        console.log(aga.title)
+                        aga.title=document.getElementById('FormControlTitle').value
+                        console.log(aga.title)
         .col
           .main-nav.text-center.d-lg-block
             nav
